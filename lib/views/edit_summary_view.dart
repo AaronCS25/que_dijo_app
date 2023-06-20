@@ -21,7 +21,7 @@ class _EditSummaryState extends State<EditSummary> {
   late int summaryId;
 
   final SummaryApiService summaryApiService = SummaryApiService();
-  //bool _isSaving = false;
+  bool _isUpdating = false;
 
   @override
   void initState() {
@@ -51,42 +51,55 @@ class _EditSummaryState extends State<EditSummary> {
           IconButton(
             icon: const Icon(Icons.save),
             tooltip: 'Save Changes',
-            onPressed: () async {
-              try {
-                await summaryApiService.updateSummary(
-                    summaryId: summaryId,
-                    title: titleController.text,
-                    content: contentController.text);
-              } catch (error) {
-                // TODO: NOTIFICAR FALLO ACTUALIZACIÓN
-                print('No se pudo actualizar (edit_summary_view): $error');
-              }
-            },
+            onPressed: _isUpdating
+                ? null
+                : () async {
+                    setState(() {
+                      _isUpdating = true;
+                    });
+
+                    try {
+                      await summaryApiService.updateSummary(
+                          summaryId: summaryId,
+                          title: titleController.text,
+                          content: contentController.text);
+                    } catch (error) {
+                      // TODO: NOTIFICAR FALLO ACTUALIZACIÓN
+                      print(
+                          'No se pudo actualizar (edit_summary_view): $error');
+                    } finally {
+                      setState(() {
+                        _isUpdating = false;
+                      });
+                    }
+                  },
           )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Scrollbar(
-          child: ListView(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 20),
-                  TextField(
-                    controller: contentController,
-                    maxLines: null,
-                    decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.all(8.0)),
-                  )
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
+      body: _isUpdating
+          ? const Center(child: CircularProgressIndicator())
+          : Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Scrollbar(
+                child: ListView(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 20),
+                        TextField(
+                          controller: contentController,
+                          maxLines: null,
+                          decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.all(8.0)),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
     );
   }
 }
