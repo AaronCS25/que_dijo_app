@@ -15,27 +15,45 @@ class FullSummary extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.edit),
             tooltip: 'Edit Summary',
-            onPressed: () {},
+            onPressed: () {
+              //TODO: Hacer una forma de edición.
+            },
           )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Scrollbar(
-          child: ListView(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      body: Column(children: [
+        const Divider(
+          color: Colors.grey,
+          thickness: 1,
+          //height: 1,
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Scrollbar(
+              child: ListView(
                 children: [
-                  const SizedBox(height: 20),
-                  SelectableText(
-                    contenido,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 20),
+                      SelectableText(
+                        contenido,
+                      )
+                    ],
                   )
                 ],
-              )
-            ],
+              ),
+            ),
           ),
         ),
+      ]),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          //TODO: Hacer un reproductor.
+        },
+        shape: const CircleBorder(),
+        child: const Icon(Icons.play_lesson),
       ),
     );
   }
