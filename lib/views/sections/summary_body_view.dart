@@ -43,7 +43,7 @@ class _BuildSummaryViewState extends State<BuildSummaryView> {
                 final contenido = item.limiteResumen;
                 final summaryId = item.idResumen;
                 return PerSummary(
-                  titulo: titulo,
+                  title: titulo,
                   contenido: contenido,
                   summaryId: summaryId,
                 );
@@ -56,7 +56,6 @@ class _BuildSummaryViewState extends State<BuildSummaryView> {
           return const CircularProgressIndicator();
         },
       ),
-      
     );
   }
 }
