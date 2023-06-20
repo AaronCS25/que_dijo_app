@@ -11,6 +11,13 @@ class FullSummary extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.edit),
+            tooltip: 'Edit Summary',
+            onPressed: () {},
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

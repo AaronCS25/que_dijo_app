@@ -1,19 +1,19 @@
 class SummaryGetResponseModel {
   final int idResumen;
-  final String idTexto;
+  //final String idTexto;
   final String titulo;
   final String resumen;
 
   SummaryGetResponseModel(
       {required this.idResumen,
-      required this.idTexto,
+      //required this.idTexto,
       required this.titulo,
       required this.resumen});
 
   factory SummaryGetResponseModel.fromJson(Map<String, dynamic> json) {
     return SummaryGetResponseModel(
         idResumen: json['id_resumen'],
-        idTexto: json['idTexto'],
+        //idTexto: json['idTexto'],
         titulo: json['titulo'],
         resumen: json['resumen']);
   }
