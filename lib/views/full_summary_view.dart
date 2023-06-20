@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:que_dijo_app/views/edit_summary_view.dart';
 
 class FullSummary extends StatelessWidget {
   const FullSummary({super.key, required this.title, required this.contenido});
@@ -16,7 +17,11 @@ class FullSummary extends StatelessWidget {
             icon: const Icon(Icons.edit),
             tooltip: 'Edit Summary',
             onPressed: () {
-              //TODO: Hacer una forma de edición.
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          EditSummary(title: title, content: contenido)));
             },
           )
         ],
