@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:que_dijo_app/apis/summary_api_service.dart';
 import 'package:que_dijo_app/models/summary_get_model.dart';
-import 'package:que_dijo_app/widgets/summary_card.dart';
+import 'package:que_dijo_app/widgets/summary_card_list.dart';
 
 class BuildSummaryView extends StatefulWidget {
   const BuildSummaryView({super.key});

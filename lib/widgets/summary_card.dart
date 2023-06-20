@@ -1,39 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:que_dijo_app/apis/summary_api_service.dart';
-//import 'package:que_dijo_app/models/summary_get_model.dart';
 
-class PerSummary extends StatelessWidget {
-  PerSummary(
-      {super.key,
-      required this.titulo,
-      required this.contenido,
-      required this.summaryId});
+class SummaryCard extends StatelessWidget {
+  const SummaryCard({super.key, required this.title, required this.contenido});
 
-  final String titulo;
+  final String title;
   final String contenido;
-  final int summaryId;
-
-  final SummaryApiService summaryApiService = SummaryApiService();
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () async {
-        //SummaryGetResponseModel summaryGetResponseModel = await summaryApiService.getSummary(summaryId: summaryId);
-        //TODO: navigate to full summary.
-      },
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Card(
-        child: SizedBox(
-          width: 300,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        elevation: 2,
+        child: Container(
+          width: double.infinity,
           height: 200,
+          padding: const EdgeInsets.all(16.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(titulo),
-              const Divider(),
+              Text(
+                title,
+                style: const TextStyle(
+                    fontSize: 20.0, fontWeight: FontWeight.bold),
+              ),
+              const Divider(
+                  color: Colors.grey,
+                  height: 20,
+                  thickness: 1,
+                  indent: 20,
+                  endIndent: 20),
               Expanded(
                 child: Text(
                   contenido,
-                  overflow: TextOverflow.clip,
+                  style: const TextStyle(fontSize: 14.0),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 5,
                 ),
               )
             ],
