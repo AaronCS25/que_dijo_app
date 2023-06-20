@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:que_dijo_app/apis/summary_api_service.dart';
+import 'package:que_dijo_app/views/full_summary_view.dart';
 import 'package:que_dijo_app/widgets/summary_card.dart';
 
 class PerSummary extends StatelessWidget {
@@ -19,8 +20,11 @@ class PerSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () async {
-          //SummaryGetResponseModel summaryGetResponseModel = await summaryApiService.getSummary(summaryId: summaryId);
-          //TODO: navigate to full summary.
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      FullSummary(title: title, contenido: contenido)));
         },
         child: SummaryCard(title: title, contenido: contenido));
   }
