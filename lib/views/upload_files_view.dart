@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:que_dijo_app/services/file_picker_service.dart';
-//import 'package:path/path.dart' as path;
 
 class UploadFilesView extends StatelessWidget {
   const UploadFilesView({super.key});
@@ -63,12 +62,14 @@ class UploadFilesView extends StatelessWidget {
                 children: [
                   GestureDetector(
                       onTap: () {
+                        // TODO: Navigator
                         print('TapMic');
                       },
                       child: Image.asset('assets/images/mic.png',
                           width: 110, height: 110)),
                   GestureDetector(
                       onTap: () {
+                        // TODO: Navigator
                         print('TapImage');
                       },
                       child: Image.asset('assets/images/photo.png',
