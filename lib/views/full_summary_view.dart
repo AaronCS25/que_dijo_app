@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:que_dijo_app/views/edit_summary_view.dart';
 
 class FullSummary extends StatelessWidget {
-  const FullSummary({super.key, required this.title, required this.contenido});
+  const FullSummary(
+      {super.key,
+      required this.title,
+      required this.contenido,
+      required this.summaryId});
 
   final String title;
   final String contenido;
+  final int summaryId;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +25,11 @@ class FullSummary extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          EditSummary(title: title, content: contenido)));
+                      builder: (context) => EditSummary(
+                            title: title,
+                            content: contenido,
+                            summaryId: summaryId,
+                          )));
             },
           )
         ],

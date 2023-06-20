@@ -15,7 +15,7 @@ class SummaryPutRequestModel {
 class SummaryPutResponseModel {
   SummaryPutResponseModel({required this.summaryId, required this.updatedData});
 
-  final int summaryId;
+  final String summaryId;
   final Map<String, dynamic> updatedData;
 
   factory SummaryPutResponseModel.fromJson(Map<String, dynamic> json) {

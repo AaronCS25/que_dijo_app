@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:que_dijo_app/apis/summary_api_service.dart';
 
 class EditSummary extends StatefulWidget {
-  const EditSummary({super.key, required this.title, required this.content});
+  const EditSummary(
+      {super.key,
+      required this.title,
+      required this.content,
+      required this.summaryId});
   final String title;
   final String content;
+  final int summaryId;
 
   @override
   State<EditSummary> createState() => _EditSummaryState();
@@ -12,12 +18,17 @@ class EditSummary extends StatefulWidget {
 class _EditSummaryState extends State<EditSummary> {
   late TextEditingController titleController;
   late TextEditingController contentController;
+  late int summaryId;
+
+  final SummaryApiService summaryApiService = SummaryApiService();
+  //bool _isSaving = false;
 
   @override
   void initState() {
     super.initState();
     titleController = TextEditingController(text: widget.title);
     contentController = TextEditingController(text: widget.content);
+    summaryId = widget.summaryId;
   }
 
   @override
@@ -41,7 +52,15 @@ class _EditSummaryState extends State<EditSummary> {
             icon: const Icon(Icons.save),
             tooltip: 'Save Changes',
             onPressed: () async {
-              // TODO: PUT REQUEST
+              try {
+                await summaryApiService.updateSummary(
+                    summaryId: summaryId,
+                    title: titleController.text,
+                    content: contentController.text);
+              } catch (error) {
+                // TODO: NOTIFICAR FALLO ACTUALIZACIÓN
+                print('No se pudo actualizar (edit_summary_view): $error');
+              }
             },
           )
         ],

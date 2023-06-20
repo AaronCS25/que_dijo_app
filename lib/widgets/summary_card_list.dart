@@ -27,8 +27,10 @@ class PerSummary extends StatelessWidget {
               context,
               MaterialPageRoute(
                   builder: (context) => FullSummary(
-                      title: summaryGetResponseModel.titulo,
-                      contenido: summaryGetResponseModel.resumen)));
+                        title: summaryGetResponseModel.titulo,
+                        contenido: summaryGetResponseModel.resumen,
+                        summaryId: summaryId,
+                      )));
         },
         child: SummaryCard(title: title, contenido: contenido));
   }
