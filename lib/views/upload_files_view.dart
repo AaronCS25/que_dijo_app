@@ -34,8 +34,10 @@ class UploadFilesView extends StatelessWidget {
                       File? file = await filePickerService.pickFile();
                       if (file != null) {
                         //TODO: Subir archivo s3
+                        print('Si se escogio un archivo!');
                       } else {
-                        //TODO: Que hacer en caso de error?
+                        //TODO: Que hacer si no se escoge archivo.
+                        print('No se escogio un archivo!');
                       }
                     },
                     child: Column(

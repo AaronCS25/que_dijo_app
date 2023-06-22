@@ -5,42 +5,42 @@ packages:
     dependency: transitive
     description:
       name: amplify_core
-      sha256: "3c4b8315f15a837f9294bd7d182dc4b05fed51548231ee912144f1fd8cca717f"
+      sha256: dd620befd0a966e576a0212e03e4f11ac428b4c5b7ba936210ee5307bc009d6a
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.1"
+    version: "1.2.0"
   amplify_db_common:
     dependency: transitive
     description:
       name: amplify_db_common
-      sha256: "20e2bf6f0f6bc11ac6f908cb0a8a1d07b2d69afc9c982bf6b9bbb7786bedbef8"
+      sha256: "696a379e5afcbc1479893a7051b08bb6746df25907554daa362d6ae811ac3831"
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.0"
+    version: "0.3.0+1"
   amplify_db_common_dart:
     dependency: transitive
     description:
       name: amplify_db_common_dart
-      sha256: "08bde69fd1f20989f9de6cb246e07d992fa90607d652917778d70658a57cd59c"
+      sha256: ae16475ebba2c2491ed3c0ea718253ee1b7ce906be73b1f31601006cb219b21f
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.0"
+    version: "0.3.0+1"
   amplify_storage_s3:
     dependency: "direct main"
     description:
       name: amplify_storage_s3
-      sha256: e08aead5023ce1d15f2cb6cbfdd4e2a5eb3dd95c3df1d5f34f53de7c64d07b7a
+      sha256: "036aed9adfae63bcf9d12d02eeacfcfd4d1fcd1095b7c6b2358f31dbc3e69434"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.1"
+    version: "1.2.0"
   amplify_storage_s3_dart:
     dependency: transitive
     description:
       name: amplify_storage_s3_dart
-      sha256: b2f5d08dc50432e381380d4ed520739835f2d1b69eb4de96f42d8a5aa478c943
+      sha256: bccb3c8ffeface98c36aea4c5adcae9a3b5f8c8272e11a28a209454794ee2308
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.0+1"
+    version: "0.3.1"
   async:
     dependency: transitive
     description:
@@ -53,18 +53,18 @@ packages:
     dependency: transitive
     description:
       name: aws_common
-      sha256: e2ec5cfd1acdbca48da39d45854e9c03e5ae4aac0f1a7ca0f297677cce357979
+      sha256: "0d0603bcb3a40fe8661a1ee6e1b8f2b09209d3846e96aeff294977095d8b3929"
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.0+1"
+    version: "0.5.0+2"
   aws_signature_v4:
     dependency: transitive
     description:
       name: aws_signature_v4
-      sha256: b8898819180236c078d68ec0512b42b05fcecc28b53cdd01714aa0cb753a3097
+      sha256: b38da32e6fdec4476957fe441f37cbeb37280de972f18a250d09cee922a7160d
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.0+1"
+    version: "0.4.0+2"
   boolean_selector:
     dependency: transitive
     description:
@@ -85,10 +85,10 @@ packages:
     dependency: transitive
     description:
       name: built_value
-      sha256: "2f17434bd5d52a26762043d6b43bb53b3acd029b4d9071a329f46d67ef297e6d"
+      sha256: "598a2a682e2a7a90f08ba39c0aaa9374c5112340f0a2e275f61b59389543d166"
       url: "https://pub.dev"
     source: hosted
-    version: "8.5.0"
+    version: "8.6.1"
   characters:
     dependency: transitive
     description:
@@ -276,10 +276,10 @@ packages:
     dependency: transitive
     description:
       name: http2
-      sha256: "3f1286baeae57e96f4bd156cb07ab39ad96cf0d1537eed80dbc65d00447b4e0e"
+      sha256: "38db0c4aa9f1cd238a5d2e86aa0cc7cc91c77e0c6c94ba64bbe85e4ff732a952"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.0"
+    version: "2.2.0"
   http_parser:
     dependency: transitive
     description:
@@ -481,18 +481,18 @@ packages:
     dependency: transitive
     description:
       name: smithy
-      sha256: a4ef6f4f6cbf25b3f2cd9c34efdb478cb197917854071a2ae9517b92faa1e607
+      sha256: "8604c72c26bcd9ac962a287874417ae0af048581e5607807a56f1f06c3c4a87b"
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.0+1"
+    version: "0.5.0+2"
   smithy_aws:
     dependency: transitive
     description:
       name: smithy_aws
-      sha256: "56ebbc6e71f61c95cb63b8a980590bb804a18be0cfc8fb8796accf061e57067d"
+      sha256: "9bfa0d53cdea806ab603e9ff28026d386bbcb1012ee9a8dabc9da93f76f58db5"
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.0+1"
+    version: "0.5.0+2"
   source_span:
     dependency: transitive
     description:
