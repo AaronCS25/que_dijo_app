@@ -1,6 +1,10 @@
 class SummaryMakeRequestModel {
-  SummaryMakeRequestModel({required this.pathBucket, required this.userId});
+  SummaryMakeRequestModel(
+      {required this.pathBucket,
+      required this.userId,
+      required this.extensionFileName});
   final String pathBucket;
+  final String extensionFileName;
   final int userId;
 
   Map<String, dynamic> toJson() {
