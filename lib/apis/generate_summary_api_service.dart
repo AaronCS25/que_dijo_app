@@ -55,5 +55,28 @@ class GenerateSummaryApiService {
     }
   }
 
-  
+  Future<GenerateSummaryResponseModel> generateSummary(
+      GenerateSummaryRequestModel generateSummaryRequestModel) async {
+    final String token = await Auth.getToken();
+    const String url =
+        'https://1ssna2zneh.execute-api.us-east-1.amazonaws.com/prod/texto/voice';
+    final Uri uri = Uri.parse(url);
+
+    final response = await http.post(uri,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'token': token
+        },
+        body: jsonEncode(generateSummaryRequestModel.toJson()));
+
+    final statusCode = response.statusCode;
+
+    if (statusCode == 200) {
+      return GenerateSummaryResponseModel(
+          statusCode: statusCode, idText: json.decode(response.body));
+    } else {
+      throw Exception(
+          'Failed to make summary part2 (generate_summary_api_service)');
+    }
+  }
 }
