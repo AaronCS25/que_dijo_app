@@ -15,8 +15,10 @@ class SignUpApiService {
           'Content-Type': 'application/json; charset=UTF-8',
         },
         body: jsonEncode(signUpRequestModel.toJson()));
+    print('status code_: ${response.statusCode}');
     if (response.statusCode == 200) {
-      return SignUpResponseModel.fromJson(json.decode(response.body));
+      return SignUpResponseModel.fromJson(
+          response.statusCode, json.decode(response.body));
     } else {
       throw Exception('Failed to load data! (signup_api_service)');
     }

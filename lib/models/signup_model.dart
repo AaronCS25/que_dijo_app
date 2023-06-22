@@ -21,9 +21,10 @@ class SignUpResponseModel {
 
   SignUpResponseModel({required this.statusCode, required this.description});
 
-  factory SignUpResponseModel.fromJson(Map<String, dynamic> json) {
+  factory SignUpResponseModel.fromJson(
+      int statusCode, Map<String, dynamic> json) {
     return SignUpResponseModel(
-      statusCode: json["statusCode"],
+      statusCode: statusCode,
       description: json["description"],
     );
   }

@@ -17,7 +17,8 @@ class LoginApiService {
     );
 
     if (response.statusCode == 200) {
-      return LoginResponseModel.fromJson(json.decode(response.body));
+      return LoginResponseModel.fromJson(
+          response.statusCode, json.decode(response.body));
     } else {
       throw Exception('Failed to load data! (login_api_service)');
     }
