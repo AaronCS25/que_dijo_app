@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:que_dijo_app/services/auth_service.dart';
+import 'package:que_dijo_app/services/crypto_name_service.dart';
 import 'package:que_dijo_app/services/file_picker_service.dart';
 import 'package:que_dijo_app/services/s3_service.dart';
 import 'package:path/path.dart' as path;
@@ -12,6 +14,7 @@ class UploadFilesView extends StatelessWidget {
   Widget build(BuildContext context) {
     final FilePickerService filePickerService = FilePickerService();
     final S3UploadService s3uploadService = S3UploadService();
+    final CryptoNameService cryptoNameService = CryptoNameService();
 
     return Scaffold(
         appBar: AppBar(
@@ -37,8 +40,13 @@ class UploadFilesView extends StatelessWidget {
                       File? file = await filePickerService.pickFile();
                       if (file != null) {
                         //TODO: Actualizas S3UploadServices.
+                        String userId = await Auth.getUserId();
                         String fileName = path.basename(file.path);
-                        await s3uploadService.uploadFile(file, fileName);
+                        String fileNameCrypto =
+                            cryptoNameService.encryptName(fileName, userId);
+                        //print('Se escogio el archivo: $fileName');
+                        //print('Se encripto el nombre en: $fileNameCrypto');
+                        await s3uploadService.uploadFile(file, fileNameCrypto);
                       } else {
                         //TODO: Que hacer si no se escoge archivo.
                         print('No se escogio un archivo!');
