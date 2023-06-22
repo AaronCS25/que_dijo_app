@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:que_dijo_app/services/file_picker_service.dart';
+import 'package:que_dijo_app/services/s3_service.dart';
+import 'package:path/path.dart' as path;
 
 class UploadFilesView extends StatelessWidget {
   const UploadFilesView({super.key});
@@ -9,6 +11,7 @@ class UploadFilesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final FilePickerService filePickerService = FilePickerService();
+    final S3UploadService s3uploadService = S3UploadService();
 
     return Scaffold(
         appBar: AppBar(
@@ -33,8 +36,9 @@ class UploadFilesView extends StatelessWidget {
                     onTap: () async {
                       File? file = await filePickerService.pickFile();
                       if (file != null) {
-                        //TODO: Subir archivo s3
-                        print('Si se escogio un archivo!');
+                        //TODO: Actualizas S3UploadServices.
+                        String fileName = path.basename(file.path);
+                        await s3uploadService.uploadFile(file, fileName);
                       } else {
                         //TODO: Que hacer si no se escoge archivo.
                         print('No se escogio un archivo!');
