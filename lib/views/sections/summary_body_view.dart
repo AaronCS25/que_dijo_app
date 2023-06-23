@@ -42,10 +42,12 @@ class _BuildSummaryViewState extends State<BuildSummaryView> {
                 final titulo = 'Resumen #${item.idResumen}';
                 final contenido = item.limiteResumen;
                 final summaryId = item.idResumen;
+                final audioUrl = item.keyAudio;
                 return PerSummary(
                   title: titulo,
                   contenido: contenido,
                   summaryId: summaryId,
+                  audioUrl: audioUrl,
                 );
               }).toList(),
             );

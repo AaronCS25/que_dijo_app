@@ -1,16 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:que_dijo_app/views/edit_summary_view.dart';
+import 'package:audioplayers/audioplayers.dart';
 
-class FullSummary extends StatelessWidget {
+class FullSummary extends StatefulWidget {
   const FullSummary(
       {super.key,
       required this.title,
       required this.contenido,
-      required this.summaryId});
+      required this.summaryId,
+      this.audioUrl});
 
   final String title;
   final String contenido;
   final int summaryId;
+  final String? audioUrl;
+
+  @override
+  State<FullSummary> createState() => _FullSummaryState();
+}
+
+class _FullSummaryState extends State<FullSummary> {
+  final player = AudioPlayer();
+  bool isPlaying = false;
+
+  Future<void> playAudioFromUrl() async {
+    if (isPlaying) {
+      print('Pause');
+      player.pause();
+    } else {
+      print('Play: ${widget.audioUrl}');
+      if (widget.audioUrl != null) {
+        await player.play(UrlSource(widget.audioUrl!));
+      } else {
+        print('No hay link');
+      }
+    }
+    setState(() {
+      isPlaying = !isPlaying;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +51,7 @@ class FullSummary extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: Text(title),
+        title: Text(widget.title),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.edit),
@@ -33,9 +61,9 @@ class FullSummary extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => EditSummary(
-                            title: title,
-                            content: contenido,
-                            summaryId: summaryId,
+                            title: widget.title,
+                            content: widget.contenido,
+                            summaryId: widget.summaryId,
                           )));
             },
           )
@@ -58,7 +86,7 @@ class FullSummary extends StatelessWidget {
                     children: [
                       const SizedBox(height: 20),
                       SelectableText(
-                        contenido,
+                        widget.contenido,
                       )
                     ],
                   )
@@ -69,8 +97,9 @@ class FullSummary extends StatelessWidget {
         ),
       ]),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          //TODO: Hacer un reproductor.
+        onPressed: () async {
+          print('Reproducir');
+          await playAudioFromUrl();
         },
         shape: const CircleBorder(),
         child: const Icon(Icons.play_lesson),

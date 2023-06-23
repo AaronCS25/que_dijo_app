@@ -7,10 +7,12 @@ class EditSummary extends StatefulWidget {
       {super.key,
       required this.title,
       required this.content,
-      required this.summaryId});
+      required this.summaryId,
+      this.audioUrl});
   final String title;
   final String content;
   final int summaryId;
+  final String? audioUrl;
 
   @override
   State<EditSummary> createState() => _EditSummaryState();
@@ -20,6 +22,7 @@ class _EditSummaryState extends State<EditSummary> {
   late TextEditingController titleController;
   late TextEditingController contentController;
   late int summaryId;
+  late String? audioUrl;
 
   final SummaryApiService summaryApiService = SummaryApiService();
   bool _isUpdating = false;
@@ -30,6 +33,7 @@ class _EditSummaryState extends State<EditSummary> {
     titleController = TextEditingController(text: widget.title);
     contentController = TextEditingController(text: widget.content);
     summaryId = widget.summaryId;
+    audioUrl = widget.audioUrl;
   }
 
   @override
@@ -51,9 +55,11 @@ class _EditSummaryState extends State<EditSummary> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => FullSummary(
-                        title: titleController.text,
-                        contenido: contentController.text,
-                        summaryId: summaryId)));
+                          title: titleController.text,
+                          contenido: contentController.text,
+                          summaryId: summaryId,
+                          audioUrl: audioUrl,
+                        )));
           },
         ),
         title: TextField(
