@@ -54,12 +54,12 @@ class PublicSummaryCard extends StatelessWidget {
                       Text('$likes')
                     ],
                   ),
-                  IconButton(
+                  /* IconButton(
                     onPressed: () {
                       // TODO: agregar funcionalidad para dar likes.
                     },
                     icon: const Icon(Icons.favorite_border),
-                  )
+                  ) */
                 ],
               )
             ],

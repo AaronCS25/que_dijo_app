@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:que_dijo_app/apis/summary_api_service.dart';
 import 'package:que_dijo_app/models/summary_get_model.dart';
-import 'package:que_dijo_app/views/full_summary_view.dart';
+import 'package:que_dijo_app/views/full_public_summary_view.dart';
 import 'package:que_dijo_app/widgets/summary_card_public.dart';
 
 class PublicPerSummary extends StatelessWidget {
@@ -28,7 +28,7 @@ class PublicPerSummary extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => FullSummary(
+                  builder: (context) => FullPublicSummary(
                         title: summaryGetResponseModel.titulo,
                         contenido: summaryGetResponseModel.resumen,
                         summaryId: summaryId,
