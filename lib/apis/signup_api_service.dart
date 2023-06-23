@@ -16,6 +16,7 @@ class SignUpApiService {
         },
         body: jsonEncode(signUpRequestModel.toJson()));
     print('status code_: ${response.statusCode}');
+    print(jsonEncode(signUpRequestModel.toJson()));
     if (response.statusCode == 200) {
       return SignUpResponseModel.fromJson(
           response.statusCode, json.decode(response.body));

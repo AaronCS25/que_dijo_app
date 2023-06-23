@@ -51,10 +51,13 @@ class _SignUpViewState extends State<SignUpView> {
                 SignUpApiService signUpApiService = SignUpApiService();
                 SignUpRequestModel signUpRequestModel = SignUpRequestModel(
                     nombre: _nombreController.text,
-                    correo: _contrasenaController.text,
+                    correo: _correoController.text,
                     contrasena: _contrasenaController.text);
 
                 try {
+                  print('controler: ${_correoController.text}');
+                  print('correo: ${signUpRequestModel.correo}');
+                  print('contrasena: ${signUpRequestModel.contrasena}');
                   SignUpResponseModel response =
                       await signUpApiService.signup(signUpRequestModel);
 
