@@ -71,4 +71,22 @@ class SummaryApiService {
       throw Exception('Error al actualizar el resumen (summary_api_service)');
     }
   }
+
+  //* GET - List Of Summaries
+  Future<ListSummariesGetResponseModel> getPublicSummaries() async {
+    final String token = await Auth.getToken();
+
+    const String url =
+        'https://1ssna2zneh.execute-api.us-east-1.amazonaws.com/prod/resumen?complete=true&public=true';
+    final Uri uri = Uri.parse(url);
+
+    final response = await http.get(uri, headers: {'token': token});
+
+    if (response.statusCode == 200) {
+      return ListSummariesGetResponseModel.fromJson(json.decode(response.body));
+    } else {
+      throw Exception(
+          'Error al cargar los datos de public resumen (summary_api_service)');
+    }
+  }
 }

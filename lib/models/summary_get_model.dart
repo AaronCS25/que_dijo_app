@@ -27,7 +27,7 @@ class SummariesGetResponseModel {
     required this.likes,
     required this.idioma,
     required this.limiteResumen,
-    //required this.keyAudio,
+    this.keyAudio,
     required this.publico,
   });
 
@@ -37,7 +37,7 @@ class SummariesGetResponseModel {
   final int likes;
   final String idioma;
   final String limiteResumen;
-  //final String keyAudio;
+  String? keyAudio;
   final bool publico;
 
   factory SummariesGetResponseModel.fromJson(Map<String, dynamic> json) {
@@ -48,7 +48,7 @@ class SummariesGetResponseModel {
       likes: json['likes'],
       idioma: json['idioma'],
       limiteResumen: json['limite_resumen'],
-      //keyAudio: json['key_audio'],
+      keyAudio: json['key_audio'],
       publico: json['publico'],
     );
   }

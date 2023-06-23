@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:que_dijo_app/views/sections/summary_body_view.dart';
+import 'package:que_dijo_app/views/sections/summary_public_body_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -13,7 +14,7 @@ class _HomeViewState extends State<HomeView> {
 
   final List<Widget> _children = [
     const BuildSummaryView(),
-    const Text('Public View'),
+    const BuildPublicSummaryView(),
     const Text('Settings View'),
     const Text('Profile View')
   ];
