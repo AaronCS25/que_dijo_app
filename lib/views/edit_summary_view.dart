@@ -8,11 +8,13 @@ class EditSummary extends StatefulWidget {
       required this.title,
       required this.content,
       required this.summaryId,
-      this.audioUrl});
+      this.audioUrl,
+      required this.public});
   final String title;
   final String content;
   final int summaryId;
   final String? audioUrl;
+  final bool public;
 
   @override
   State<EditSummary> createState() => _EditSummaryState();
@@ -59,6 +61,7 @@ class _EditSummaryState extends State<EditSummary> {
                           contenido: contentController.text,
                           summaryId: summaryId,
                           audioUrl: audioUrl,
+                          public: widget.public,
                         )));
           },
         ),

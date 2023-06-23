@@ -12,6 +12,18 @@ class SummaryPutRequestModel {
   }
 }
 
+class SummaryPutPublicRequestModel {
+  SummaryPutPublicRequestModel({required this.public});
+
+  final bool public;
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['public'] = public;
+    return data;
+  }
+}
+
 class SummaryPutResponseModel {
   SummaryPutResponseModel({required this.summaryId, required this.updatedData});
 

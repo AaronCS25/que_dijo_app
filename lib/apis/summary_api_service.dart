@@ -89,4 +89,31 @@ class SummaryApiService {
           'Error al cargar los datos de public resumen (summary_api_service)');
     }
   }
+
+  Future<SummaryPutResponseModel> postSummary(
+      {required int summaryId, required bool public}) async {
+    final String token = await Auth.getToken();
+
+    final String url =
+        'https://1ssna2zneh.execute-api.us-east-1.amazonaws.com/prod/resumen/$summaryId';
+    final Uri uri = Uri.parse(url);
+
+    final Map<String, String> headers = {
+      'Content-Type': 'application/json',
+      'token': token,
+    };
+
+    final Map<String, dynamic> body = {
+      'publico': public,
+    };
+
+    final response =
+        await http.put(uri, headers: headers, body: json.encode(body));
+
+    if (response.statusCode == 200) {
+      return SummaryPutResponseModel.fromJson(json.decode(response.body));
+    } else {
+      throw Exception('Error al publicar resumen (summary_api_service)');
+    }
+  }
 }

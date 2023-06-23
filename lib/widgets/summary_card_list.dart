@@ -10,12 +10,14 @@ class PerSummary extends StatelessWidget {
       required this.title,
       required this.contenido,
       required this.summaryId,
-      this.audioUrl});
+      this.audioUrl,
+      required this.public});
 
   final String title;
   final String contenido;
   final int summaryId;
   final String? audioUrl;
+  final bool public;
 
   final SummaryApiService summaryApiService = SummaryApiService();
 
@@ -33,6 +35,7 @@ class PerSummary extends StatelessWidget {
                         contenido: summaryGetResponseModel.resumen,
                         summaryId: summaryId,
                         audioUrl: audioUrl,
+                        public: public,
                       )));
         },
         child: SummaryCard(title: title, contenido: contenido));
