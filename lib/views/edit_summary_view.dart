@@ -44,7 +44,8 @@ class _EditSummaryState extends State<EditSummary> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back_ios),
+          iconSize: 30,
           onPressed: () {
             Navigator.pushReplacement(
                 context,

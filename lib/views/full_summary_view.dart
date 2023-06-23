@@ -16,6 +16,13 @@ class FullSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          iconSize: 30,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: Text(title),
         actions: <Widget>[
           IconButton(
