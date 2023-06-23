@@ -53,19 +53,42 @@ class _FullSummaryState extends State<FullSummary> {
         ),
         title: Text(widget.title),
         actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.edit),
-            tooltip: 'Edit Summary',
-            onPressed: () async {
-              await Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => EditSummary(
-                            title: widget.title,
-                            content: widget.contenido,
-                            summaryId: widget.summaryId,
-                          )));
+          PopupMenuButton(
+            onSelected: (result) async {
+              if (result == 0) {
+                await Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => EditSummary(
+                              title: widget.title,
+                              content: widget.contenido,
+                              summaryId: widget.summaryId,
+                              audioUrl: widget.audioUrl,
+                            )));
+              } else if (result == 1) {}
             },
+            itemBuilder: (context) => const [
+              PopupMenuItem(
+                value: 0,
+                child: Row(
+                  children: [
+                    Icon(Icons.edit),
+                    SizedBox(width: 8),
+                    Text('Editar')
+                  ],
+                ),
+              ),
+              PopupMenuItem(
+                value: 1,
+                child: Row(
+                  children: [
+                    Icon(Icons.publish),
+                    SizedBox(width: 8),
+                    Text('Publicar')
+                  ],
+                ),
+              ),
+            ],
           )
         ],
       ),
