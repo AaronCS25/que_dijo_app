@@ -38,7 +38,11 @@ class _FullSummaryState extends State<FullSummary> {
       if (widget.audioUrl != null) {
         await player.play(UrlSource(widget.audioUrl!));
       } else {
-        print('No hay link');
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Audio no disponible de momento'),
+          ),
+        );
       }
     }
     setState(() {

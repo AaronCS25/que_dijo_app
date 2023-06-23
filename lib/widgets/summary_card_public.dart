@@ -44,16 +44,16 @@ class PublicSummaryCard extends StatelessWidget {
                   maxLines: 5,
                 ),
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
+                  /* Row(
                     children: [
                       const Icon(Icons.favorite, color: Colors.red),
                       const SizedBox(width: 8),
                       Text('$likes')
                     ],
-                  ),
+                  ), */
                   /* IconButton(
                     onPressed: () {
                       // TODO: agregar funcionalidad para dar likes.
