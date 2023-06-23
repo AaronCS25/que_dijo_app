@@ -7,6 +7,7 @@ import 'package:que_dijo_app/services/file_picker_service.dart';
 import 'package:que_dijo_app/services/generate_summary_service.dart';
 import 'package:que_dijo_app/services/s3_service.dart';
 import 'package:path/path.dart' as path;
+import 'package:que_dijo_app/views/recorder_view.dart';
 
 class UploadFilesView extends StatelessWidget {
   const UploadFilesView({super.key});
@@ -79,7 +80,11 @@ class UploadFilesView extends StatelessWidget {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        // TODO: Navigator
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const DisplayMicrophone()));
                         print('TapMic');
                       },
                       child: Image.asset('assets/images/mic.png',
