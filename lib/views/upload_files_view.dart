@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:que_dijo_app/services/auth_service.dart';
 import 'package:que_dijo_app/services/crypto_name_service.dart';
 import 'package:que_dijo_app/services/file_picker_service.dart';
+import 'package:que_dijo_app/services/generate_summary_service.dart';
 import 'package:que_dijo_app/services/s3_service.dart';
 import 'package:path/path.dart' as path;
 
@@ -15,6 +16,7 @@ class UploadFilesView extends StatelessWidget {
     final FilePickerService filePickerService = FilePickerService();
     final S3UploadService s3uploadService = S3UploadService();
     final CryptoNameService cryptoNameService = CryptoNameService();
+    final GenerateSummary generateSummary = GenerateSummary();
 
     return Scaffold(
         appBar: AppBar(
@@ -39,17 +41,18 @@ class UploadFilesView extends StatelessWidget {
                     onTap: () async {
                       File? file = await filePickerService.pickFile();
                       if (file != null) {
-                        //TODO: Actualizas S3UploadServices.
+                        //TODO: Actualizar S3UploadServices.
                         String userId = await Auth.getUserId();
                         String fileName = path.basename(file.path);
+                        String fileExtension = path.extension(file.path);
                         String fileNameCrypto =
                             cryptoNameService.encryptName(fileName, userId);
-                        //print('Se escogio el archivo: $fileName');
-                        //print('Se encripto el nombre en: $fileNameCrypto');
                         await s3uploadService.uploadFile(file, fileNameCrypto);
+                        // TODO: Actualizar la función para generar resúmenes.
+                        generateSummary.generateFullSummary(
+                            fileNameCrypto, fileExtension);
                       } else {
                         //TODO: Que hacer si no se escoge archivo.
-                        print('No se escogio un archivo!');
                       }
                     },
                     child: Column(

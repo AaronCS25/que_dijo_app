@@ -59,7 +59,7 @@ class GenerateSummaryApiService {
       GenerateSummaryRequestModel generateSummaryRequestModel) async {
     final String token = await Auth.getToken();
     const String url =
-        'https://1ssna2zneh.execute-api.us-east-1.amazonaws.com/prod/texto/voice';
+        'https://1ssna2zneh.execute-api.us-east-1.amazonaws.com/prod/resumen';
     final Uri uri = Uri.parse(url);
 
     final response = await http.post(uri,
