@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
-class SummaryCard extends StatelessWidget {
-  const SummaryCard({super.key, required this.title, required this.contenido});
+class PublicSummaryCard extends StatelessWidget {
+  const PublicSummaryCard(
+      {super.key,
+      required this.title,
+      required this.contenido,
+      required this.likes});
 
   final String title;
   final String contenido;
+  final int likes;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +20,7 @@ class SummaryCard extends StatelessWidget {
         elevation: 2,
         child: Container(
           width: double.infinity,
-          height: 200,
+          height: 220,
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,6 +43,24 @@ class SummaryCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   maxLines: 5,
                 ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(Icons.favorite, color: Colors.red),
+                      const SizedBox(width: 8),
+                      Text('$likes')
+                    ],
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      // TODO: agregar funcionalidad para dar likes.
+                    },
+                    icon: const Icon(Icons.favorite_border),
+                  )
+                ],
               )
             ],
           ),
