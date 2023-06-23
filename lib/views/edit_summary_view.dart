@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:que_dijo_app/apis/summary_api_service.dart';
+import 'package:que_dijo_app/views/full_summary_view.dart';
 
 class EditSummary extends StatefulWidget {
   const EditSummary(
@@ -42,6 +43,18 @@ class _EditSummaryState extends State<EditSummary> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => FullSummary(
+                        title: titleController.text,
+                        contenido: contentController.text,
+                        summaryId: summaryId)));
+          },
+        ),
         title: TextField(
           controller: titleController,
           decoration: const InputDecoration(

@@ -22,7 +22,7 @@ class FullSummary extends StatelessWidget {
             icon: const Icon(Icons.edit),
             tooltip: 'Edit Summary',
             onPressed: () async {
-              await Navigator.push(
+              await Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                       builder: (context) => EditSummary(

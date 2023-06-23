@@ -52,7 +52,7 @@ class UploadFilesView extends StatelessWidget {
                         generateSummary.generateFullSummary(
                             fileNameCrypto, fileExtension);
                       } else {
-                        //TODO: Que hacer si no se escoge archivo.
+                        //TODO: Que hacer si no se escoge el archivo.
                       }
                     },
                     child: Column(
