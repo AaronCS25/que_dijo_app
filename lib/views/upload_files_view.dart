@@ -41,18 +41,16 @@ class UploadFilesView extends StatelessWidget {
                     onTap: () async {
                       File? file = await filePickerService.pickFile();
                       if (file != null) {
-                        //TODO: Actualizar S3UploadServices.
                         String userId = await Auth.getUserId();
                         String fileName = path.basename(file.path);
                         String fileExtension = path.extension(file.path);
                         String fileNameCrypto =
                             cryptoNameService.encryptName(fileName, userId);
                         await s3uploadService.uploadFile(file, fileNameCrypto);
-                        // TODO: Actualizar la función para generar resúmenes.
                         generateSummary.generateFullSummary(
                             fileNameCrypto, fileExtension);
                       } else {
-                        //TODO: Que hacer si no se escoge el archivo.
+                        //TODO: Notificar
                       }
                     },
                     child: Column(
