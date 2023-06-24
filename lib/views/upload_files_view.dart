@@ -3,11 +3,14 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:que_dijo_app/services/auth_service.dart';
 import 'package:que_dijo_app/services/crypto_name_service.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:que_dijo_app/services/file_picker_service.dart';
 import 'package:que_dijo_app/services/generate_summary_service.dart';
+import 'package:que_dijo_app/views/camara_view.dart';
 import 'package:que_dijo_app/services/s3_service.dart';
 import 'package:path/path.dart' as path;
 import 'package:que_dijo_app/views/recorder_view.dart';
+import 'package:camera/camera.dart';
 
 class UploadFilesView extends StatelessWidget {
   const UploadFilesView({super.key});
@@ -90,8 +93,21 @@ class UploadFilesView extends StatelessWidget {
                       child: Image.asset('assets/images/mic.png',
                           width: 110, height: 110)),
                   GestureDetector(
-                      onTap: () {
+                      onTap: () async {
                         // TODO: Navigator
+                        PermissionStatus status =
+                            await Permission.camera.request();
+                        if (status.isGranted) {
+                          await availableCameras().then(
+                            (value) => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        DisplayCamera(cameras: value))),
+                          );
+                        } else {
+                          openAppSettings();
+                        }
                         print('TapImage');
                       },
                       child: Image.asset('assets/images/photo.png',
