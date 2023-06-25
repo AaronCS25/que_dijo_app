@@ -15,7 +15,7 @@ class LoginApiService {
       },
       body: jsonEncode(loginRequestModel.toJson()),
     );
-
+    print(jsonEncode(loginRequestModel.toJson()));
     if (response.statusCode == 200) {
       return LoginResponseModel.fromJson(
           response.statusCode, json.decode(response.body));

@@ -18,7 +18,7 @@ class GenerateSummary {
     '.mp3',
     '.flac',
     '.m4a',
-    'aac'
+    '.aac'
   ];
 
   // Primer paso: manda a extraer el contenido
