@@ -85,7 +85,7 @@ class _FullSummaryState extends State<FullSummary> {
             } else if (result == 1) {
               try {
                 await apiService.postSummary(
-                    summaryId: widget.summaryId, public: !widget.public);
+                    summaryId: widget.summaryId, public: !publicLocal);
                 setState(() {
                   publicLocal = !publicLocal;
                 });

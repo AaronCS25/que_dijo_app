@@ -44,8 +44,8 @@ class UploadFilesView extends StatelessWidget {
                         String userId = await Auth.getUserId();
                         String fileName = path.basename(file.path);
                         String fileExtension = path.extension(file.path);
-                        String fileNameCrypto =
-                            cryptoNameService.encryptName(fileName, userId);
+                        String fileNameCrypto = cryptoNameService.encryptName(
+                            fileName, fileExtension, userId);
                         await s3uploadService.uploadFile(file, fileNameCrypto);
                         generateSummary.generateFullSummary(
                             fileNameCrypto, fileExtension);
