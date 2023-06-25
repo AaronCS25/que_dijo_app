@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:que_dijo_app/services/auth_service.dart';
 import 'package:que_dijo_app/views/login_view.dart';
 

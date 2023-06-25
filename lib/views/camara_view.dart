@@ -116,7 +116,7 @@ class LastConfirmation extends StatelessWidget {
             String fileName = path.basename(file.path);
             String fileExtension = path.extension(file.path);
             String fileNameCrypto =
-                cryptoNameService.encryptName(fileName, userId);
+                cryptoNameService.encryptName(fileName, fileExtension, userId);
             await s3uploadService.uploadFile(file, fileNameCrypto);
             // TODO: Actualizar la función para generar resúmenes.
             generateSummary.generateFullSummary(fileNameCrypto, fileExtension);

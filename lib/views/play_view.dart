@@ -78,8 +78,8 @@ class _PlayAudioState extends State<PlayAudio> {
                             String userId = await Auth.getUserId();
                             String fileName = path.basename(file.path);
                             String fileExtension = path.extension(file.path);
-                            String fileNameCrypto =
-                                cryptoNameService.encryptName(fileName, userId);
+                            String fileNameCrypto = cryptoNameService
+                                .encryptName(fileName, fileExtension, userId);
                             print(fileNameCrypto);
                             print(fileExtension);
                             await s3uploadService.uploadFile(

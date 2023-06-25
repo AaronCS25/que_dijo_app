@@ -13,8 +13,7 @@ class CryptoNameService {
     final name = cryptoName.substring(0, 16);
     final random = Random();
     final randomNumber = random.nextInt(10000);
-    String result =
-        '$userId-$name-$randomNumber-$formattedTime.$inputExtension';
+    String result = '$userId-$name-$randomNumber-$formattedTime$inputExtension';
     return result;
   }
 }
