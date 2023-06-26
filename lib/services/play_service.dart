@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sound/flutter_sound.dart';
-import 'package:que_dijo_app/classes/recorder_class.dart';
+import 'package:que_dijo_app/services/recorder_service.dart';
 
 class SoundPlay {
   FlutterSoundPlayer paudio = FlutterSoundPlayer();

@@ -1,15 +1,9 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:que_dijo_app/services/auth_service.dart';
-import 'package:que_dijo_app/services/crypto_name_service.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:que_dijo_app/services/file_picker_service.dart';
-import 'package:que_dijo_app/services/generate_summary_service.dart';
 import 'package:que_dijo_app/views/camara_view.dart';
-import 'package:que_dijo_app/services/s3_service.dart';
-import 'package:path/path.dart' as path;
 import 'package:que_dijo_app/views/recorder_view.dart';
+import 'package:que_dijo_app/views/charging_view.dart';
 import 'package:camera/camera.dart';
 
 class UploadFilesView extends StatelessWidget {
@@ -18,9 +12,6 @@ class UploadFilesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final FilePickerService filePickerService = FilePickerService();
-    final S3UploadService s3uploadService = S3UploadService();
-    final CryptoNameService cryptoNameService = CryptoNameService();
-    final GenerateSummary generateSummary = GenerateSummary();
 
     return Scaffold(
         appBar: AppBar(
@@ -43,19 +34,17 @@ class UploadFilesView extends StatelessWidget {
               child: Center(
                 child: GestureDetector(
                     onTap: () async {
-                      File? file = await filePickerService.pickFile();
-                      if (file != null) {
-                        String userId = await Auth.getUserId();
-                        String fileName = path.basename(file.path);
-                        String fileExtension = path.extension(file.path);
-                        String fileNameCrypto = cryptoNameService.encryptName(
-                            fileName, fileExtension, userId);
-                        await s3uploadService.uploadFile(file, fileNameCrypto);
-                        generateSummary.generateFullSummary(
-                            fileNameCrypto, fileExtension);
-                      } else {
-                        //TODO: Notificar
-                      }
+                      await filePickerService.pickFile().then((value) {
+                        if (value != null) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => LoadingScreen(file: value),
+                            ),
+                          );
+                        } else {
+                          print('No file selected');
+                        }
+                      });
                     },
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

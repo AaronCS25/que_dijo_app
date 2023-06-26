@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:que_dijo_app/classes/play_class.dart';
-import 'package:que_dijo_app/classes/recorder_class.dart';
-import 'package:path/path.dart' as path;
-import 'package:que_dijo_app/services/auth_service.dart';
-import 'package:que_dijo_app/services/crypto_name_service.dart';
-import 'package:que_dijo_app/services/generate_summary_service.dart';
-import 'package:que_dijo_app/services/s3_service.dart';
+import 'package:que_dijo_app/services/play_service.dart';
+import 'package:que_dijo_app/services/recorder_service.dart';
+import 'package:que_dijo_app/views/charging_view.dart';
 
 class PlayAudio extends StatefulWidget {
   const PlayAudio({super.key});
@@ -35,11 +31,6 @@ class _PlayAudioState extends State<PlayAudio> {
   @override
   Widget build(BuildContext context) {
     File file = File(archivoToSave);
-    //String fileName = path.basename(file.path);
-
-    final S3UploadService s3uploadService = S3UploadService();
-    final CryptoNameService cryptoNameService = CryptoNameService();
-    final GenerateSummary generateSummary = GenerateSummary();
     return Scaffold(
       appBar: AppBar(title: const Text('Enviar audio')),
       body: Center(
@@ -67,45 +58,14 @@ class _PlayAudioState extends State<PlayAudio> {
                   child: Icon(icon, size: 60)),
               const SizedBox(height: 30),
               ElevatedButton(
-                  onPressed: isUploading
-                      ? null
-                      : () async {
-                          setState(() {
-                            isUploading = true;
-                          });
-                          try {
-                            //TODO: Actualizar S3UploadServices.
-                            String userId = await Auth.getUserId();
-                            String fileName = path.basename(file.path);
-                            String fileExtension = path.extension(file.path);
-                            String fileNameCrypto = cryptoNameService
-                                .encryptName(fileName, fileExtension, userId);
-                            print(fileNameCrypto);
-                            print(fileExtension);
-                            await s3uploadService.uploadFile(
-                                file, fileNameCrypto);
-                            // TODO: Actualizar la función para generar resúmenes.
-                            generateSummary.generateFullSummary(
-                                fileNameCrypto, fileExtension);
-                          } catch (e) {
-                            //Falta hacer
-                          } finally {
-                            setState(() {
-                              isUploading = false;
-                            });
-                          }
-                        },
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => LoadingScreen(file: file),
+                      ),
+                    );
+                  },
                   child: const Icon(Icons.send, size: 60)),
-              if (isUploading)
-                const Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: CircularProgressIndicator(),
-                ),
-              if (isUploading)
-                const Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: Text("Subiendo el archivo..."),
-                ),
             ],
           ),
         ),

@@ -73,7 +73,8 @@ class GenerateSummaryApiService {
 
     if (statusCode == 200) {
       return GenerateSummaryResponseModel(
-          statusCode: statusCode, idText: json.decode(response.body));
+          statusCode: statusCode,
+          idText: json.decode(response.body)['id_resumen'].toString());
     } else {
       throw Exception(
           'Failed to make summary part2 (generate_summary_api_service)');
