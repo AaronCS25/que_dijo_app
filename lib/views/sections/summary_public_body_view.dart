@@ -42,7 +42,7 @@ class _BuildPublicSummaryViewState extends State<BuildPublicSummaryView> {
                 final titulo = 'Resumen #${item.idResumen}';
                 final contenido = item.limiteResumen;
                 final summaryId = item.idResumen;
-                final likes = item.likes;
+                const likes = 0;
                 return PublicPerSummary(
                   title: titulo,
                   contenido: contenido,

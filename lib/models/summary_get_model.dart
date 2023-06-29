@@ -24,7 +24,7 @@ class SummariesGetResponseModel {
     required this.idResumen,
     required this.idUsuario,
     required this.idTexto,
-    required this.likes,
+    //required this.likes,
     required this.idioma,
     required this.limiteResumen,
     this.keyAudio,
@@ -34,7 +34,7 @@ class SummariesGetResponseModel {
   final int idResumen;
   final int idUsuario;
   final String idTexto;
-  final int likes;
+  //final int likes;
   final String idioma;
   final String limiteResumen;
   String? keyAudio;
@@ -45,7 +45,7 @@ class SummariesGetResponseModel {
       idResumen: json['id_resumen'],
       idUsuario: json['id_usuario'],
       idTexto: json['id_texto'],
-      likes: json['likes'],
+      //likes: json['likes'],
       idioma: json['idioma'],
       limiteResumen: json['limite_resumen'],
       keyAudio: json['key_audio'],
