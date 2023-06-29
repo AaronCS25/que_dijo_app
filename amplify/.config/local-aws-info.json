@@ -1,0 +1,12 @@
+{
+  "dev": {
+    "configLevel": "project",
+    "useProfile": false,
+    "awsConfigFilePath": "C:\\Users\\krhis\\.amplify\\awscloudformation\\5LvfCFtTrY"
+  },
+  "quedijof": {
+    "configLevel": "project",
+    "useProfile": false,
+    "awsConfigFilePath": "C:\\Users\\krhis\\.amplify\\awscloudformation\\pjZczX8oUM"
+  }
+}

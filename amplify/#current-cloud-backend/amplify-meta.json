@@ -1,0 +1,75 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-quedijo-quedijof-171024-authRole",
+      "UnauthRoleArn": "arn:aws:iam::657375288395:role/amplify-quedijo-quedijof-171024-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::657375288395:role/amplify-quedijo-quedijof-171024-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-quedijo-quedijof-171024-deployment",
+      "UnauthRoleName": "amplify-quedijo-quedijof-171024-unauthRole",
+      "StackName": "amplify-quedijo-quedijof-171024",
+      "StackId": "arn:aws:cloudformation:us-east-1:657375288395:stack/amplify-quedijo-quedijof-171024/98cc4900-1600-11ee-9d02-121d84b62ce9",
+      "AmplifyAppId": "d29v94z9zvwzn3"
+    }
+  },
+  "auth": {
+    "quedijo27b148de": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-quedijo-quedijof-171024-deployment/amplify-cfn-templates/auth/quedijo27b148de-cloudformation-template.json",
+        "logicalId": "authquedijo27b148de"
+      },
+      "lastPushTimeStamp": "2023-06-28T22:20:32.283Z",
+      "output": {
+        "UserPoolId": "us-east-1_9lvlinJxp",
+        "AppClientIDWeb": "1ga01b5kjcc9sk5e14lvhb9pae",
+        "AppClientID": "5grp26m6fqtu0fp8pj9s75agkt",
+        "IdentityPoolId": "us-east-1:3ee1677e-b3cf-4ab7-bc08-d85348ad004a",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:657375288395:userpool/us-east-1_9lvlinJxp",
+        "IdentityPoolName": "quedijo27b148de_identitypool_27b148de__quedijof",
+        "UserPoolName": "quedijo27b148de_userpool_27b148de"
+      },
+      "lastPushDirHash": "m7SnT+elukS5SC98Ouuf9xKzsxA="
+    }
+  },
+  "storage": {
+    "s3f": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "lastPushTimeStamp": "2023-06-28T22:20:32.283Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-quedijo-quedijof-171024-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
+        "logicalId": "storages3f"
+      },
+      "output": {
+        "BucketName": "quedijof171024-quedijof",
+        "Region": "us-east-1"
+      },
+      "lastPushDirHash": "NeIGbXQ0fkKAMUawB3avkh+psvo="
+    }
+  }
+}

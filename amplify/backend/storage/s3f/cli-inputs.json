@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3f",
+  "policyUUID": "ed35d92b",
+  "bucketName": "quedijof",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "READ"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

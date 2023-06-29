@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:que_dijo_app/apis/summary_api_service.dart';
 import 'package:que_dijo_app/views/edit_summary_view.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:amplify_storage_s3/amplify_storage_s3.dart';
+import 'package:amplify_flutter/amplify_flutter.dart';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
 class FullSummary extends StatefulWidget {
   const FullSummary(
@@ -34,15 +38,27 @@ class _FullSummaryState extends State<FullSummary> {
       print('Pause');
       player.pause();
     } else {
-      print('Play: ${widget.audioUrl}');
+      final documentsDir = await getApplicationDocumentsDirectory();
+      final filepath = documentsDir.path + 'temp.mp3';
       if (widget.audioUrl != null) {
-        await player.play(UrlSource(widget.audioUrl!));
+        try {
+          final result = await Amplify.Storage.downloadFile(
+            key: widget.audioUrl!,
+            localFile: AWSFile.fromPath(filepath),
+            onProgress: (progress) {
+              safePrint('Fraction completed: ${progress.fractionCompleted}');
+            },
+          ).result;
+
+          safePrint('Downloaded file is located at: ${result.localFile.path}');
+        } on StorageException catch (e) {
+          safePrint(e.message);
+        } finally {
+          var urlSource = DeviceFileSource(filepath);
+          player.play(urlSource);
+        }
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Audio no disponible de momento'),
-          ),
-        );
+        print('No hay path');
       }
     }
     setState(() {

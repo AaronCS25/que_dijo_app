@@ -10,11 +10,13 @@ class PublicPerSummary extends StatelessWidget {
       required this.title,
       required this.contenido,
       required this.summaryId,
+      this.audioUrl,
       required this.likes});
 
   final String title;
   final String contenido;
   final int summaryId;
+  final String? audioUrl;
   final int likes;
 
   final SummaryApiService summaryApiService = SummaryApiService();
@@ -32,6 +34,7 @@ class PublicPerSummary extends StatelessWidget {
                         title: summaryGetResponseModel.titulo,
                         contenido: summaryGetResponseModel.resumen,
                         summaryId: summaryId,
+                        audioUrl: audioUrl,
                       )));
         },
         child: PublicSummaryCard(
